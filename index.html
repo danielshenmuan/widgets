@@ -4,50 +4,44 @@
 	<title>Bible Verse Widget</title>
 	<style>
 		body {
-			background-color: #f8f8f8;
-			font-family: 'Roboto', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f5f5f5;
+			font-family: sans-serif;
+			font-size: 14px;
 		}
+
 		.container {
-			width: 80%;
-			margin: 0 auto;
-			padding-top: 30px;
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			text-align: center;
 			height: 100vh;
+			padding: 0 20px;
+			box-sizing: border-box;
+			text-align: center;
 		}
-		h1 {
-			font-size: 3rem;
+
+		.title {
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+
+		.verse {
+			font-size: 28px;
+			font-weight: bold;
 			margin-bottom: 20px;
-		}
-		p {
-			font-size: 2rem;
-			font-weight: 300;
-			margin-bottom: 30px;
-			line-height: 1.5;
-		}
-		button {
-			background-color: #4CAF50;
-			color: white;
-			padding: 10px 20px;
-			border: none;
-			border-radius: 5px;
-			font-size: 1.5rem;
-			cursor: pointer;
-			transition: background-color 0.3s ease;
-		}
-		button:hover {
-			background-color: #3e8e41;
+      margin-top: 60px;
 		}
 	</style>
 </head>
 <body>
 	<div class="container">
-		<h1>Bible Verse of the Day</h1>
-		<p id="verse"></p>
-		<button id="button">Get Another Verse</button>
+		<div class="title">Bible Verse of the Day</div>
+		<div class="verse" id="verse"></div>
 	</div>
 
 	<script>
@@ -61,8 +55,6 @@
 				console.error(error);
 			})
 		}
-
-		document.getElementById('button').addEventListener('click', getVerse);
 
 		getVerse();
 	</script>
