@@ -33,36 +33,51 @@
 		.verse {
 			font-size: 28px;
 			font-weight: bold;
-			margin-bottom: 20px;
-      margin-top: 60px;
+			margin-bottom: 10px;
+		}
+
+		.source {
+			font-size: 18px;
+			font-style: italic;
 		}
 	</style>
 </head>
 <body>
 	<div class="container">
-	<div class="title">Bible Verse of the Day</div>
-	<div class="verse" id="verse"></div>
-	<div class="source" id="source"></div>
-</div>
+		<div class="title">Encouraging Bible Verse of the Day</div>
+		<div class="verse" id="verse"></div>
+		<div class="source" id="source"></div>
+	</div>
 
-<script>
-	function getVerse() {
-		fetch('https://labs.bible.org/api/?passage=random')
-		.then(response => response.text())
-		.then(data => {
-			const verseIndex = data.indexOf('\n');
-			const verse = data.slice(0, verseIndex);
-			const source = data.slice(verseIndex + 1);
-			document.getElementById('verse').innerHTML = verse;
-			document.getElementById('source').innerHTML = source;
-		})
-		.catch(error => {
-			console.error(error);
-		})
-	}
+	<script>
+		let verses = [
+			{
+				verse: "I can do all things through Christ who strengthens me.",
+				source: "Philippians 4:13"
+			},
+			{
+				verse: "But those who trust in the Lord will find new strength. They will soar high on wings like eagles. They will run and not grow weary. They will walk and not faint.",
+				source: "Isaiah 40:31"
+			},
+			{
+				verse: "The Lord is my strength and my shield; in him my heart trusts, and I am helped; my heart exults, and with my song I give thanks to him.",
+				source: "Psalm 28:7"
+			}
+			// Add more verses here
+		];
 
-	getVerse();
-</script>
+		function getRandomVerse() {
+			let randomIndex = Math.floor(Math.random() * verses.length);
+			return verses[randomIndex];
+		}
 
+		function displayVerse() {
+			let verse = getRandomVerse();
+			document.getElementById('verse').innerHTML = verse.verse;
+			document.getElementById('source').innerHTML = '-' + verse.source;
+		}
+
+		displayVerse();
+	</script>
 </body>
 </html>
