@@ -40,23 +40,29 @@
 </head>
 <body>
 	<div class="container">
-		<div class="title">Bible Verse of the Day</div>
-		<div class="verse" id="verse"></div>
-	</div>
+	<div class="title">Bible Verse of the Day</div>
+	<div class="verse" id="verse"></div>
+	<div class="source" id="source"></div>
+</div>
 
-	<script>
-		function getVerse() {
-			fetch('https://labs.bible.org/api/?passage=random')
-			.then(response => response.text())
-			.then(data => {
-				document.getElementById('verse').innerHTML = data;
-			})
-			.catch(error => {
-				console.error(error);
-			})
-		}
+<script>
+	function getVerse() {
+		fetch('https://labs.bible.org/api/?passage=random')
+		.then(response => response.text())
+		.then(data => {
+			const verseIndex = data.indexOf('\n');
+			const verse = data.slice(0, verseIndex);
+			const source = data.slice(verseIndex + 1);
+			document.getElementById('verse').innerHTML = verse;
+			document.getElementById('source').innerHTML = source;
+		})
+		.catch(error => {
+			console.error(error);
+		})
+	}
 
-		getVerse();
-	</script>
+	getVerse();
+</script>
+
 </body>
 </html>
