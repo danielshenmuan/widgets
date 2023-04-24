@@ -1,13 +1,16 @@
 <!DOCTYPE html>
+
 <html>
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Goudy+Bookletter+1911&display=swap" rel="stylesheet">
+
 	<title>Bible Verse Widget</title>
 	<style>
 		body {
 			margin: 0;
 			padding: 0;
 			background-color: #f5f5f5;
-			font-family: sans-serif;
+			font-family: 'Goudy Bookletter 1911',serif;
 			font-size: 14px;
 		}
 
@@ -24,7 +27,7 @@
 
 		.title {
 			position: fixed;
-			top: 20px;
+			top: 0px;
 			left: 20px;
 			font-size: 20px;
 			font-weight: bold;
@@ -44,7 +47,6 @@
 </head>
 <body>
 	<div class="container">
-		<div class="title">Encouraging Bible Verse of the Day</div>
 		<div class="verse" id="verse"></div>
 		<div class="source" id="source"></div>
 	</div>
@@ -74,7 +76,7 @@
 		function displayVerse() {
 			let verse = getRandomVerse();
 			document.getElementById('verse').innerHTML = verse.verse;
-			document.getElementById('source').innerHTML = '-' + verse.source;
+			document.getElementById('source').innerHTML = verse.source;
 		}
 
 		displayVerse();
